@@ -19,10 +19,11 @@ function resolve(dir) {
 }
 
 const webpackConfig = new Config()
-console.log('-----', isProd)
+
 webpackConfig
   .mode(isProd ? 'production' : 'development')
-  .devtool(isProd ? 'false' : 'eval-source-map')
+  .devtool(isProd ? 'false' : 'cheap-module-source-map')
+  .stats('errors-only')
   .entry('app')
     .add('./vue/main.js')
     .end()
@@ -80,7 +81,7 @@ webpackConfig
       .use('ts')
         .loader('ts-loader')
         .options({
-          transpileOnly: true
+          transpileOnly: true,
         })
         .end()
       .end()

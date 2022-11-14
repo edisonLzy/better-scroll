@@ -23,7 +23,11 @@
         this.bs = new BScroll(this.$refs.scroll, {
           scrollX: true,
           scrollY: false,
-          mouseWheel: true
+          mouseWheel: {
+            onMousewheelMove({ x, y }){
+                 console.log(x, y);
+            }
+          },
         })
       }
     }

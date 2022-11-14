@@ -93,7 +93,8 @@ function generateBuildConfigs(packagesName) {
           file: resolve(`packages/${name}/dist/${name}${type.ext}`),
           name: PascalCase(name),
           format: type.format,
-          banner: generateBanner(name)
+          banner: generateBanner(name),
+          sourcemap: true
         },
         plugins: generateBuildPluginsConfigs(type.ext.indexOf('min')>-1, name)
       }
